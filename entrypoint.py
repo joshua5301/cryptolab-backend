@@ -3,6 +3,7 @@ import subprocess
 import time
 import sys
 import signal
+import os
 
 
 def run_background(cmd: list):
@@ -43,5 +44,4 @@ def main():
 
 
 if __name__ == "__main__":
-    import os
     main()

@@ -35,8 +35,15 @@ app.include_router(data_router.router, prefix="/data", tags=["data"])
 app.include_router(auth_router.router, prefix="/auth", tags=["auth"])
 app.include_router(watchlist_router.router, prefix="/watchlist", tags=["watchlist"])
 
+@app.get("/")
+def read_root():
+    return {"message": "Welcome to cryptolab API", "status": "running", "version": "0.1.0"}
+
 @app.middleware("http")
 async def ensure_ingest_ready(request: Request, call_next):
+    # Allow root path and docs to pass through
+    if request.url.path in ["/", "/docs", "/redoc", "/openapi.json"]:
+        return await call_next(request)
     if getattr(app.state, "ingest_ready", False):
         return await call_next(request)
     return JSONResponse(status_code=503, content={"detail": "Initial OHLCV ingest pending"})

@@ -1,0 +1,40 @@
+[project]
+name = "cryptolab-backend"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "backtrader>=1.9.78.123",
+    "celery>=5.5.3",
+    "dtaidistance>=2.3.13",
+    "dune-client>=1.10.0",
+    "fastapi[all]>=0.120.1",
+    "filelock>=3.20.0",
+    "lightgbm>=4.6.0",
+    "loguru>=0.7.3",
+    "numpy>=2.3.4",
+    "openai>=2.7.2",
+    "pandas>=2.3.3",
+    "passlib[bcrypt]>=1.7.4",
+    "pydantic>=2.12.3",
+    "python-dotenv>=1.2.1",
+    "python-jose[cryptography]>=3.5.0",
+    "redis>=7.0.1",
+    "requests>=2.32.5",
+    "scipy>=1.16.3",
+    "shap>=0.49.1",
+    "sqlalchemy>=2.0.44",
+    "ta>=0.11.0",
+    "torch>=2.9.1",
+    "tqdm>=4.67.1",
+    "uvicorn>=0.38.0",
+]
+
+[[tool.uv.index]]
+name = "pytorch-cpu"
+url = "https://download.pytorch.org/whl/cpu"
+explicit = true
+
+[tool.uv.sources]
+torch = { index = "pytorch-cpu" }
